@@ -1,0 +1,8 @@
+type Emoji {
+  ## The shortcode of the emoji
+  shortcode: String!
+  ## URL to the emoji static image
+  static_url: String!
+  ## URL to the emoji image
+  url: String!
+}

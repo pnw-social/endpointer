@@ -1,0 +1,4 @@
+type Reports {
+  ## Fetching a user's reports
+  reports: [Reports]
+}

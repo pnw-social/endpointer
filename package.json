@@ -1,0 +1,24 @@
+{
+  "name": "endpointer",
+  "version": "1.0.0",
+  "description": "Mastodon GraphQL/Swagger endpoint",
+  "main": "dist/index.js",
+  "scripts": {
+    "main": "nodemon src/index.js --exec babel-node --presets env",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Clark Rinker",
+  "license": "MIT",
+  "dependencies": {
+    "apollo-server-express": "^1.2.0",
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "graphql": "^0.11.7",
+    "graphql-tools": "^2.8.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "nodemon": "^1.12.1"
+  }
+}

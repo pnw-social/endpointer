@@ -1,0 +1,4 @@
+type DomainBlocks {
+  ## Get list of blocked domains
+  domain_blocks(filter: AccountFilter): [String]
+}

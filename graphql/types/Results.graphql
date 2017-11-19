@@ -1,0 +1,8 @@
+type Results {
+  ## An array of matched Accounts
+  accounts: [Account]!
+  ## An array of matched Statuses
+  statuses: [Status]!
+  ## An array of matched hashtags, as strings
+  hashtags: [String]!
+}

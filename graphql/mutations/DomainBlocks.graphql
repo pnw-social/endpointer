@@ -1,0 +1,4 @@
+type MDomainBlocks {
+  block(domain: String): Boolean
+  unblock(domain: String): Boolean
+}

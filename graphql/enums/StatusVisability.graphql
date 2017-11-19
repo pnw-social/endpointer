@@ -1,0 +1,6 @@
+enum StatusVisibility {
+  public
+  unlisted
+  private
+  direct
+}

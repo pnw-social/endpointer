@@ -1,0 +1,6 @@
+type MNotifications {
+  ## Clearing notifications
+  clear: Boolean
+  ## Dismissing a single notification
+  dismiss(id: ID): Boolean
+}

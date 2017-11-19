@@ -1,0 +1,21 @@
+type AttachmentMetadataItem {
+  width: Int
+  height: Int
+  size: Int
+  aspect: String
+}
+
+type AttachmentMetadata {
+  small: AttachmentMetadataItem
+  original: AttachmentMetadataItem
+}
+
+type Attachment {
+  id: ID!
+  type: ATTACHMENT_TYPE!
+  url: String!
+  remote_url: String
+  preview_url: String!
+  text_url: String
+  meta: AttachmentMetadata
+}

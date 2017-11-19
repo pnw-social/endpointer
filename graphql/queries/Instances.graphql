@@ -1,0 +1,4 @@
+type Instances {
+  ## Getting instance information
+  instance: Instance
+}

@@ -1,0 +1,14 @@
+input AccountStatusFilter {
+  ## Only return statuses that have media attachments
+  only_media: Boolean
+  ## Only return statuses that have been pinned
+  pinned: Boolean
+  ## Skip statuses that reply to other statuses
+  exclude_replies: Boolean
+  ## Get a list of statuses with ID less than this value
+  max_id: ID
+  ## a list of statuses with ID greater than this value
+  since_id: ID
+  ## Maximum number of statuses to get (Default 20, Max 40)
+  limit: Int
+}

@@ -1,0 +1,6 @@
+enum NotificationType {
+  mention
+  reblog
+  favourite
+  follow
+}

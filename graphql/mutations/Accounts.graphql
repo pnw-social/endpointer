@@ -1,0 +1,16 @@
+type MAccounts {
+  ## Fetching an account
+  update_credentials(update: UpdateCredentials): Int
+  ## Follow account by ID
+  follow(account: ID): Boolean
+  ## Unfollow account by ID
+  unfollow(account: ID): Boolean
+  ## Block account by ID
+  block(account: ID): Boolean
+  ## Unblock account by ID
+  unblock(account: ID): Boolean
+  ## Mute account by ID
+  mute(account: ID): Boolean
+  ## Unmute account by ID
+  unmute(account: ID): Boolean
+}

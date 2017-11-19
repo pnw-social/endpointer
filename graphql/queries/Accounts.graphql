@@ -1,0 +1,16 @@
+type Accounts {
+  ## Fetching an account
+  account(id: ID): Account
+  ## Getting the current user:
+  verify_credentials: Account
+  ## Getting an account's followers
+  followers(filter: AccountFilter): [Account]
+  ## Getting who account is following:
+  following(filter: AccountFilter): [Account]
+  ## Getting an account's statuses:
+  statuses(filter: AccountStatusFilter) : [Status]
+  ## Relationship
+  relationships(id: [ID]): [Relationship]
+  ## Search Accounts
+  search(q: String limit: Int): [Account]
+}

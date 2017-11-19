@@ -1,0 +1,6 @@
+type Report {
+  ## The ID of the report
+  id: ID!
+  ## The action taken in response to the report
+  action_taken: String!
+}

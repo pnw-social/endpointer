@@ -1,0 +1,4 @@
+## Following a remote user
+type MFollows {
+  follows(uri: String): Boolean
+}

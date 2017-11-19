@@ -1,0 +1,4 @@
+type Mutes {
+  ## Fetching a user's mutes
+  mutes(filter: AccountFilter): [Account]!
+}

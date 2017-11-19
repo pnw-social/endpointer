@@ -1,0 +1,12 @@
+type Notification {
+  ## The notification ID
+  id: ID!
+  ## One of: "mention", "reblog", "favourite", "follow"
+  type: NotificationType!
+  ## The time the notification was created
+  created_at: String!
+  ## The Account sending the notification to the user
+  account: Account!
+  ## The Status associated with the notification, if applicable
+  status: Status
+}

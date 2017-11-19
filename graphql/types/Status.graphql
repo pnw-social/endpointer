@@ -1,0 +1,48 @@
+type Status {
+  ## The ID of the status
+  id: ID!
+  ## A Fediverse-unique resource ID
+  uri: ID!
+  ## URL to the status page (can be remote)
+  url: String!
+  ##  The Account which posted the status
+  account: Account!
+  ## ID of the status it replies to
+  in_reply_to_id: ID
+  ## ID of the account it replies to
+  in_reply_to_account_id: ID
+  ## The reblogged Status
+  reblog: Status
+  ## Body of the status; this will contain HTML (remote HTML already sanitized
+  content: String!
+  ## The time the status was created
+  created_at: String!
+  ## An array of Emoji
+  emojis: [Emoji]
+  ## The number of reblogs for the status
+  reblogs_count: Int!
+  ## The number of favourites for the status
+  favourites_count: Int!
+  ## Whether the authenticated user has reblogged the status
+  reblogged: Boolean
+  ## Whether the authenticated user has favourited the status
+  favourited: Boolean
+  ## Whether the authenticated user has muted the conversation this status from
+  muted: Boolean
+  ## Whether media attachments should be hidden by default
+  sensitive: Boolean!
+  ## If not empty, warning text that should be displayed before the actual content
+  spoiler_text: String!
+  ## StatusVisibility
+  visibility: StatusVisibility!
+  ## An array of Attachments
+  media_attachments: [Attachment]!
+  ## An array of Mentions
+  mentions: [Mention]!
+  ## An array of Tags
+  tags: [Tag]!
+  ## Application
+  application: Application
+  ## The detected language for the status
+  language: String
+}

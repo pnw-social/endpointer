@@ -1,0 +1,4 @@
+type Favourites {
+  ## Get list of favourited posts 
+  favourites(filter: AccountFilter): [Status]
+}

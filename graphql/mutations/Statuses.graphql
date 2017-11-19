@@ -1,0 +1,22 @@
+type MStatuses {
+  ## Posting a new status
+  create(data: StatusData): Status
+  ## Deleting a status
+  delete(id: ID): Boolean
+  ## Reblogging a status
+  reblog(id: ID): Status
+  ## Unreblogging a status
+  reblog(id: ID): Status
+  ## Favouriting a status
+  favourite(id: ID): Status
+  ## Unfavouriting a status
+  unfavourite(id: ID): Status
+  ## Pin a status
+  pin(id: ID): Status
+  ## Unpin a status
+  unpin(id: ID): Status
+  ## Mute a status
+  mute(id: ID): Status
+  ## Unmute a status
+  ununmute(id: ID): Status
+}

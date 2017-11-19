@@ -1,0 +1,8 @@
+type Timelines {
+  ## Home Timeline
+  home(filter: TimelineFilter): [Status]
+  ## Public Timeline
+  public(filter: TimelineFilter): [Status]
+  ## Tag Timeline
+  tag(tag: String filter: TimelineFilter): [Status]
+}

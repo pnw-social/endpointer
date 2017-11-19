@@ -1,0 +1,10 @@
+input TimelineFilter {
+  ## Only return statuses originating from this instance
+  local: Boolean
+  ## Get a list of followers with ID less than this value
+  max_id: ID
+  ## Get a list of followers with ID greater than this value
+  since_id: ID
+  ## Maximum number of followers to get (Default 40, Max 80)
+  limit: Int
+}

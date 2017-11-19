@@ -1,0 +1,24 @@
+type Card {
+  ## The url associated with the card
+  url: String!
+  ## The title of the card
+  title: String!
+  ## The card description
+  description: String!
+  ## The image associated with the card, if any
+  image: String
+  ## The card type
+  type: CardType!
+  ## OEmbed data
+  author_name: String
+  ## OEmbed data
+  provider_name: String
+  ## OEmbed data
+  provider_url: String
+  ## OEmbed data
+  html: String
+  ## OEmbed data
+  width: Int
+  ## OEmbed data
+  height: Int
+}

@@ -1,0 +1,14 @@
+type Instance {
+  ## URI of the current instance
+  uri: String!
+  ## The instance's title
+  title: String!
+  ## A description for the instance
+  description: String!
+  ## An email address which can be used to contact the instance administrator
+  email: String!
+  ## The Mastodon version used by instance.
+  version: String!
+  ## `streaming_api`
+  urls: String!
+}

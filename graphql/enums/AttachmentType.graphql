@@ -1,0 +1,6 @@
+enum ATTACHMENT_TYPE {
+  image
+  video
+  gifv
+  unknown
+}

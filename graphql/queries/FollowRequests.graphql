@@ -1,0 +1,4 @@
+type FollowRequests {
+  ## Fetching a list of follow requests
+  follow_requests(filter: AccountFilter): [Account]!
+}

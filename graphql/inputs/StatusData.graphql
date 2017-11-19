@@ -1,0 +1,8 @@
+input StatusData {
+  status: String!
+  in_reply_to_id: ID
+  media_ids: [ID]
+  sensitive: Boolean
+  spoiler_text: String
+  visibility: StatusVisibility
+}

@@ -1,0 +1,16 @@
+type Relationship {
+  ## Target account id
+  id: ID!
+  ## Whether the user is currently following the account
+  following: Boolean!
+  ## Whether the user is currently being followed by the account
+  followed_by: Boolean!
+  ## Whether the user is currently blocking the account
+  blocking: Boolean!
+  ## Whether the user is currently muting the account
+  muting: Boolean!
+  ## Whether the user has requested to follow the account
+  requested: Boolean!
+  ## Whether the user is currently blocking the accounts's domain
+  domain_blocking: Boolean!
+}

@@ -1,0 +1,6 @@
+type Application {
+  ## Name of the app
+  name: String!
+  ## Homepage URL of the app
+  website: String
+}

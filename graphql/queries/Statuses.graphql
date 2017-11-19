@@ -1,0 +1,12 @@
+type Statuses {
+  ## Fetching a status
+  status(id: ID): Status
+  ## Getting status context
+  context(id: ID): Context
+  ## Getting a card associated with a status
+  card(id: ID): Card
+  ## Getting who reblogged a status
+  reblogged_by(filter: AccountFilter): [Account]!
+  ## Getting who favourited a status
+  favourited_by(filter: AccountFilter): [Account]!
+}

@@ -1,0 +1,32 @@
+type Account {
+  ## The ID of the account
+  id: ID!
+  ## The username of the account
+  username: String!
+  ## Equals `username` for local users, includes `@domain` for remote ones
+  acct: String!
+  ## The account's display name
+  display_name: String!
+  ## Boolean for when the account cannot be followed without waiting for approval first
+  locked: Boolean!
+  ## The time the account was created
+  created_at: String!
+  ## The number of followers for the account
+  followers_count: Int!
+  ## The number of accounts the given account is following
+  following_count: Int!
+  ## The number of statuses the account has made
+  statuses_count: Int!
+  ## Biography of user
+  note: String!
+  ## URL of the user's profile page (can be remote)
+  url: String!
+  ## URL to the avatar image
+  avatar: String!
+  ## URL to the avatar static image (gif)
+  avatar_static: String!
+  ## URL to the header image
+  header: String!
+  ## URL to the header static image (gif)
+  header_static: String!
+}
