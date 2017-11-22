@@ -1,7 +1,9 @@
+import config from '../config';
+
 const Sequelize = require('sequelize');
-const sequelize = new Sequelize('database', 'username', 'password', {
-  host: 'localhost',
-  dialect: 'sqlite',
+const sequelize = new Sequelize(config.SQL_DBNAME, config.SQL_DBUSER, config.SQL_DBPASS, {
+  host: config.SQL_DBHOST,
+  dialect: config.SQL_DBDIALECT,
 
   pool: {
     max: 5,
@@ -11,7 +13,7 @@ const sequelize = new Sequelize('database', 'username', 'password', {
   },
 
   // SQLite only
-  storage: 'bin/database.sqlite',
+  storage: 'database.sqlite',
 
   // http://docs.sequelizejs.com/manual/tutorial/querying.html#operators
   operatorsAliases: false
@@ -20,6 +22,8 @@ const sequelize = new Sequelize('database', 'username', 'password', {
 import makeUser from './user';
 
 const User = makeUser(sequelize);
+
+sequelize.sync();
 
 
 export {

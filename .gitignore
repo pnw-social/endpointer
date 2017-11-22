@@ -1,3 +1,7 @@
+# db stuff
+database.sqlite
+# config stuffs
+settings.json
 # Logs
 logs
 *.log

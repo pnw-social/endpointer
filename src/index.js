@@ -1,11 +1,14 @@
 import passport from 'passport';
 const OAuth2Strategy = require('passport-oauth2');
+const OAuth2RefreshTokenStrategy = require('passport-oauth2-middleware').Strategy;
 import express from 'express';
+const session = require("express-session");
 import bodyParser from 'body-parser';
 import { graphqlExpress, graphiqlExpress} from 'apollo-server-express';
 import { makeExecutableSchema } from 'graphql-tools';
 
-import * as resolvers from './resolvers';
+import config from './config';
+import resolvers from './resolvers';
 import loadSchema from './schema';
 
 import {User} from './model';
@@ -36,54 +39,62 @@ const PORT = 3000;
 var app = express();
 
 
-passport.use('provider', new OAuth2Strategy({
-    authorizationURL: 'https://pnw.social/oauth/authorize',
-    tokenURL: 'https://pnw.social/oauth/token',
-    clientID: "e",
-    clientSecret: "",
-    callbackURL: "http://localhost:3000/auth/provider/callback"
-  },
-  (accessToken, refreshToken, profile, done) => {
-    console.log("ayyy");
-    User.findOrCreate({
-        where:  {id: profile.id},
-        defaults: {id: profile.id, accessToken, refreshToken, profile: JSON.stringify(profile)}
+const refreshStrategy = new OAuth2RefreshTokenStrategy({
+  refreshWindow: 10, // Time in seconds to perform a token refresh before it expires
+  userProperty: 'ticket', // Active user property name to store OAuth tokens
+  authenticationURL: '/auth/provider', // URL to redirect unathorized users to
+  callbackParameter: 'callback' //URL query parameter name to pass a return URL
+});
+passport.use('main', refreshStrategy);
 
-      }).then((result) => {
-        console.log(result);
-        done(null, result[0]);
-      }).catch((err) => {
-        console.log(err);
-        done(err, null);
-      })
-    }
-));
+const oauthStartegy = new OAuth2Strategy({
+    authorizationURL: `${config.MASTODON_DOMAIN}/oauth/authorize`,
+    tokenURL: `${config.MASTODON_DOMAIN}/oauth/token`,
+    clientID: config.OAUTH_KEY,
+    clientSecret: config.OAUTH_SECRET,
+    callbackURL: `${config.DOMAIN}/auth/provider/callback`,
+    passReqToCallback: false 
+  }, 
+  refreshStrategy.getOAuth2StrategyCallback()
+);
+
+passport.use('provider', oauthStartegy);
+refreshStrategy.useOAuth2Strategy(oauthStartegy); 
+
+
 //
+passport.serializeUser(function(user, done) {
+  done(null, user);
+});
 
+passport.deserializeUser(function(user, done) {
+  done(null, user);
+});
+
+app.use(session({ secret: "cats" }));
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.get('/auth/provider', passport.authenticate('provider'));
-app.get('/auth/provider/callback',
-  passport.authenticate('provider', { successRedirect: '/graphql',
-                                      failureRedirect: '/login' }));
+app.get('/auth/provider/callback', passport.authenticate('provider'), function(req, res) {
+  res.redirect('/graphiql');
+});
 
 
-app.use('/graphql', bodyParser.json(), graphqlExpress({ schema }));
+app.use('/graphql', passport.authenticate('main'), bodyParser.json(), 
+  graphqlExpress((req, res)=> {
+    return { 
+      schema,
+      context: req.user
+    }
+  })
+);
 
-app.use('/graphiql', (req, res, next) => {
-  console.log(req.headers);
-  if(req.headers["Authorization"])
-  {
-    next();
-  }
-  else
-  {
-    res.redirect('/login');
-    response.end();
-  }
-})
-app.use('/graphiql', graphiqlExpress({
+
+app.use('/graphiql', passport.authenticate('main'),
+  graphiqlExpress({
   endpointURL: '/graphql',
-  passHeader: "'Authorization': 'Bearer lorem ipsum'"
+  passHeader: "'Clark': 'bar'"
 }));
 
 app.listen(PORT);
