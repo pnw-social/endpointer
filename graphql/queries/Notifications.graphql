@@ -2,5 +2,5 @@ type Notifications {
   ## Fetching a user's notifications
   notifications(filter: NotificationFilter): [Notification]!
   ## Getting a single notification
-  notification(id: ID): Notification
+  notification(id: ID!): Notification!
 }

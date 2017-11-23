@@ -1,4 +1,4 @@
 type MReports {
   ## Reporting a user
-  report(account_id: ID status_ids: ID comment: ID): Report
+  report(account_id: ID status_ids: [ID]! comment: ID): Report
 }

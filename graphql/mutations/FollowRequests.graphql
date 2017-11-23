@@ -1,0 +1,5 @@
+type MFollowRequests {
+  ## Fetching a list of follow requests
+  authorize(id: ID!): Boolean
+  reject(id: ID!): Boolean
+}

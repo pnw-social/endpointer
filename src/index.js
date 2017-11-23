@@ -11,7 +11,7 @@ import config from './config';
 import resolvers from './resolvers';
 import loadSchema from './schema';
 
-import {User} from './model';
+//import {User} from './model';
 
 const s = loadSchema();
 

@@ -48,9 +48,23 @@ function patch(uri, data, token) {
     return rp(opts);
 }
 
+function delet(uri, data, token) {
+    const opts =  {
+        method: 'DELETE',        
+        uri: uri,
+        body: data,
+        headers: {
+            Authorization: `Bearer ${token}`
+        },
+        json: true // Automatically parses the JSON string in the response
+    };
+    return rp(opts);
+}
+
 export {
     get,
     post,
     patch,
-    railGet
+    railGet,
+    delet
 }
