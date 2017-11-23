@@ -1,7 +1,11 @@
-import Accounts from './Accounts';
+import {Accounts, MAccounts} from './Accounts';
 export default {
     RootQuery: {
         Accounts: () => ({}) 
     },
-    Accounts
+    RootMutation: {
+        Accounts: () => ({}) 
+    },
+    Accounts,
+    MAccounts
 }

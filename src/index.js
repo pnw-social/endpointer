@@ -75,7 +75,7 @@ app.use(session({ secret: "cats" }));
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.get('/auth/provider', passport.authenticate('provider'));
+app.get('/auth/provider', passport.authenticate('provider', { scope: ['read', 'write', 'follow'] }));
 app.get('/auth/provider/callback', passport.authenticate('provider'), function(req, res) {
   res.redirect('/graphiql');
 });
@@ -89,7 +89,6 @@ app.use('/graphql', passport.authenticate('main'), bodyParser.json(),
     }
   })
 );
-
 
 app.use('/graphiql', passport.authenticate('main'),
   graphiqlExpress({

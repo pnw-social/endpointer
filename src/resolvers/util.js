@@ -1,8 +1,10 @@
 var rp = require('request-promise');
 
 // Rails arrays in query strings have something like!!![]= in front of them
-function railThatArray() {
-    
+function railGet(key, arr) {
+    return arr.map((e,i) => {
+        return `${key}[]=${e}`;
+    }).join("&");
 }
 
 
@@ -22,6 +24,7 @@ function get(uri, data, token) {
 
 function post(uri, data, token) {
     const opts =  {
+        method: 'POST',        
         uri: uri,
         body: data,
         headers: {
@@ -31,7 +34,23 @@ function post(uri, data, token) {
     };
     return rp(opts);
 }
+
+function patch(uri, data, token) {
+    const opts =  {
+        method: 'PATCH',        
+        uri: uri,
+        body: data,
+        headers: {
+            Authorization: `Bearer ${token}`
+        },
+        json: true // Automatically parses the JSON string in the response
+    };
+    return rp(opts);
+}
+
 export {
     get,
-    post
+    post,
+    patch,
+    railGet
 }
